@@ -4,8 +4,10 @@ const dom = {
   minus: document.getElementById("minus"),
   pause: document.getElementById("pause"),
   heart: document.getElementById("heart"),
-  getCount: () => parseInt(dom.counter.innerText),
   likes: document.querySelector(".likes"),
+  comments: document.getElementById("list"),
+  commentForm: document.getElementById("comment-form"),
+  getCount: () => parseInt(dom.counter.innerText),
 }
 
 // basic selectors
@@ -48,8 +50,15 @@ function like(){
   }
 }
 
+function handleComment(e){
+  e.preventDefault()
+  dom.comments.innerHTML += `<p>${e.target.comment.value}</p>`
+  e.target.reset()
+}
+
 setInterval(() => count(1), 1000)
 dom.plus.addEventListener("click", () => count(1))
 dom.minus.addEventListener("click", () => count(-1))
 dom.pause.addEventListener("click", togglePause)
 dom.heart.addEventListener("click", like)
+dom.commentForm.addEventListener("submit", handleComment)
