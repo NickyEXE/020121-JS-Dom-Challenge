@@ -5,13 +5,13 @@ class Like {
   constructor(second){
     this.second = second
     this.likes = 1
-    this.constructor.all.push(this)
     this.element = document.createElement("li")
     this.updateElement()
     app.dom.likes.appendChild(this.element)
+    this.constructor.all.push(this)
   }
 
-  increaseLikes = () => {
+  increaseCount = () => {
     this.likes ++
     this.updateElement()
   }
@@ -22,12 +22,7 @@ class Like {
 
   static updateOrCreateBySecond(second){
     const like = this.findBySecond(second)
-    if (like) {
-      like.increaseLikes()
-      return like
-    } else {
-      return new Like(second)
-    }
+    like ? like.increaseCount() : new Like(second)
   }
 
 
