@@ -22,6 +22,7 @@ class Like {
 
   static updateOrCreateBySecond(second){
     const like = this.findBySecond(second)
+    // the below is a "ternary" operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
     like ? like.increaseCount() : new Like(second)
   }
 
