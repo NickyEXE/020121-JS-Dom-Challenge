@@ -33,12 +33,17 @@ class App {
   }
 
   setEventListeners = () => {
-    const {dom, count, togglePause, like, handleComment } = this
-    dom.plus.addEventListener("click", () => count(1))
-    dom.minus.addEventListener("click", () => count(-1))
-    dom.pause.addEventListener("click", togglePause)
-    dom.heart.addEventListener("click", like)
-    dom.commentForm.addEventListener("submit", handleComment)
+    // this is advanced destructuring
+    // See "Nested Object and Array Destructuring" here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#examples
+    // what I'm saying is:
+      // from the keys "count", "togglePause", "like", and "handleComment" on the App instance (this), create variables count, togglePause, like, and handleComment
+      // also, go into this.dom (the nested object) and create variables out of the keys "plus", "minus", "pause", "heart", and "commentForm"
+    const { count, togglePause, like, handleComment, dom: { plus, minus, pause, heart, commentForm } } = this
+    plus.addEventListener("click", () => count(1))
+    minus.addEventListener("click", () => count(-1))
+    pause.addEventListener("click", togglePause)
+    heart.addEventListener("click", like)
+    commentForm.addEventListener("submit", handleComment)
   }
 
 }
