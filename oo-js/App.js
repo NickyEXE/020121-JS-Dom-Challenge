@@ -10,6 +10,7 @@ class App {
   }
 
   // using && in this way is called "short-circuiting".
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation
   // It can be a short way to write "if this, then do this" and is often used by React developers.
   // JavaScript's && will handle (Thing A) && (Thing B) by first checking if Thing A is truthy.
     // If Thing A is truthy, it'll go on and execute and return Thing B
