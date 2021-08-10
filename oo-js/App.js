@@ -5,7 +5,7 @@ class App {
   constructor(){
     this.dom = new Dom()
     this.paused = false
-    this.interval = setInterval(() => this.count(1), 1000)
+    this.toggleInterval()
     this.setEventListeners()
   }
 
@@ -21,7 +21,16 @@ class App {
   togglePause = () => {
     this.dom.togglePauseText()
     this.dom.toggleButtons()
-    this.paused = !this.paused
+    this.toggleInterval()
+  }
+
+  toggleInterval = () => {
+    if (this.interval) {
+      // clearInterval returns undefined, so the below will both clear the interval and make the above conditional return false
+      this.interval = clearInterval(this.interval)
+    } else {
+      this.interval = setInterval(() => this.count(1), 1000)
+    }
   }
 
   like = () => Like.updateOrCreateBySecond(this.dom.currentSecond())
