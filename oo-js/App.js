@@ -25,13 +25,20 @@ class App {
 
   like = () => Like.updateOrCreateBySecond(this.dom.currentSecond())
 
+  handleComment = (e) => {
+    e.preventDefault()
+    const { comments, commentForm } = this.dom
+    comments.innerHTML += `<p>${commentForm.comment.value}</p>`
+    commentForm.reset()
+  }
+
   setEventListeners = () => {
     const {dom, count, togglePause, like, handleComment } = this
     dom.plus.addEventListener("click", () => count(1))
     dom.minus.addEventListener("click", () => count(-1))
     dom.pause.addEventListener("click", togglePause)
     dom.heart.addEventListener("click", like)
-    // dom.commentForm.addEventListener("submit", handleComment)
+    dom.commentForm.addEventListener("submit", handleComment)
   }
 
 }
