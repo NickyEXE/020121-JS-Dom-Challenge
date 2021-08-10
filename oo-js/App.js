@@ -4,7 +4,6 @@
 class App {
   constructor(){
     this.dom = new Dom()
-    this.paused = false
     this.toggleInterval()
     this.setEventListeners()
   }
@@ -16,7 +15,7 @@ class App {
     // If Thing A is truthy, it'll go on and execute and return Thing B
     // If Thing A is falsy, it'll just return Thing A.
     // So (conditional) && thingToDoIfItsTrue() is a very common pattern.
-  count = (num) => !this.paused && (this.dom.counter.innerText = this.dom.currentSecond() + num)
+  count = (num) => this.dom.counter.innerText = this.dom.currentSecond() + num
 
   togglePause = () => {
     this.dom.togglePauseText()
